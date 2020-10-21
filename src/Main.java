@@ -29,7 +29,7 @@ public class Main {
      */
     static float calcExpresion(float a, float b, float c, float d) {
         float result = a * (b + (c / d));
-//        System.out.println(result);
+        System.out.println(result);
         return result;
     }
 
