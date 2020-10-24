@@ -20,7 +20,7 @@ public class Main {
 
         printName("Mike");
 
-        countingBissextileOrNot(2019);
+        countingBissextileOrNot(2020);
 
     }
 
@@ -60,20 +60,13 @@ public class Main {
         System.out.println("Привет " + name + "!");
     }
 
-    static void countingBissextileOrNot(int year) {
-        if (year % 4 == 0) {
-            if (year % 100 == 0) {
-                if (year % 400 == 0) {
-                    System.out.println(year + " год является високосным");
-                } else {
-                    System.out.println(year + " год не является високосным");
-                }
-            } else {
-                System.out.println(year + " год является високосным");
-            }
-
-        } else {
+    static boolean countingBissextileOrNot(int year) {
+        boolean aboutYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+        if (aboutYear) {
+            System.out.println(year + " год является високосным");
+        } else
             System.out.println(year + " год не является високосным");
-        }
+
+        return aboutYear;
     }
 }
