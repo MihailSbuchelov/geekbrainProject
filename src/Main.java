@@ -1,72 +1,36 @@
+import lessons.Lesson1;
+import lessons.Lesson2;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        boolean b = true;
-        int i = 33;
-        long l = 12344l;
-        float f = 123213.123f;
-        double d = 1232.25656d;
-        String s = "это строка";
+//Lesson 1
+//        boolean b = true;
+//        int i = 33;
+//        long l = 12344l;
+//        float f = 123213.123f;
+//        double d = 1232.25656d;
+//        String s = "это строка";
+//
+//        Lesson1.calcExpresion(1.222f, 2.2f, 3.33f, 0.0f);
+//        Lesson1.calcExpresion(1.222f, 2.2f, 3.33f, 1.0f);
+//        Lesson1.comparingSumWithLim(2, 19);
+//        Lesson1.printSignNum(-200);
+//        Lesson1.returnTrueForNegativeNum(-32);
+//        Lesson1.printName("Mike");
+//        Lesson1.countingBissextileOrNot(2020);
 
-        calcExpresion(1.222f, 2.2f, 3.33f, 0.0f);
-        calcExpresion(1.222f, 2.2f, 3.33f, 1.0f);
-
-        comparingSumWithLim(2, 19);
-
-        printSignNum(-200);
-
-        returnTrueForNegativeNum(-32);
-
-        printName("Mike");
-
-        countingBissextileOrNot(2020);
+// Lesson 2
+        Lesson2 less2 = new Lesson2();
+//        less2.changePlaceForMassTask1();
+//        less2.changeValForMassTask3();
+//        Lesson2.minMaxValTask5(less2.getMassTask3());
+//        Lesson2.checkBalanceTask6(new int[]{2, 2, 2, 1, 2, 2, 10, 1});
+//        Lesson2.checkBalanceTask6(new int[]{1, 1, 1, 2, 1});
+        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},2);
+        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},-2);
 
     }
 
-    /*
-    without processing zero-value into the param
-     */
-    static float calcExpresion(float a, float b, float c, float d) {
-        float result = a * (b + (c / d));
-        System.out.println(result);
-        return result;
-    }
-
-    static boolean comparingSumWithLim(int a, int b) {
-        int leftBorder = 10, rightBorder = 20;
-        int sum = a + b;
-        if (sum >= leftBorder && sum <= rightBorder) {
-            return true;
-        }
-        return false;
-    }
-
-    static void printSignNum(int num) {
-        if (num >= 0) {
-            System.out.println("Число " + num + " положительное");
-        }
-        System.out.println("Число " + num + " отрицательное");
-    }
-
-    static boolean returnTrueForNegativeNum(int num) {
-        if (num >= 0) {
-            return false;
-        }
-        return true;
-    }
-
-    static void printName(String name) {
-        System.out.println("Привет " + name + "!");
-    }
-
-    static boolean countingBissextileOrNot(int year) {
-        boolean aboutYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-        if (aboutYear) {
-            System.out.println(year + " год является високосным");
-        } else
-            System.out.println(year + " год не является високосным");
-
-        return aboutYear;
-    }
 }
