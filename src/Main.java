@@ -22,14 +22,14 @@ public class Main {
 //        Lesson1.countingBissextileOrNot(2020);
 
 // Lesson 2
-        Lesson2 less2 = new Lesson2();
+//        Lesson2 less2 = new Lesson2();
 //        less2.changePlaceForMassTask1();
 //        less2.changeValForMassTask3();
 //        Lesson2.minMaxValTask5(less2.getMassTask3());
 //        Lesson2.checkBalanceTask6(new int[]{2, 2, 2, 1, 2, 2, 10, 1});
 //        Lesson2.checkBalanceTask6(new int[]{1, 1, 1, 2, 1});
-        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},2);
-        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},-2);
+//        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},2);
+//        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},-2);
 
     }
 
