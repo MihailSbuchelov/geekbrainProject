@@ -53,7 +53,6 @@ public class Lesson2 {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if (i == j) massTask4[i][j] = 1;
-                else massTask4[i][j] = 0;
                 System.out.println("massTask4[" + i + "][" + j + "]= " + massTask4[i][j]);
             }
         }
