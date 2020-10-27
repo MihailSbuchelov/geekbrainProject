@@ -1,5 +1,6 @@
 import lessons.Lesson1;
 import lessons.Lesson2;
+import lessons.Lesson3;
 
 public class Main {
 
@@ -30,6 +31,9 @@ public class Main {
 //        Lesson2.checkBalanceTask6(new int[]{1, 1, 1, 2, 1});
 //        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},2);
 //        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},-2);
+
+//        Lesson3
+        Lesson3 lesson3 = new Lesson3();
 
     }
 
