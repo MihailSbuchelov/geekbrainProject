@@ -1,6 +1,7 @@
 import lessons.Lesson1;
 import lessons.Lesson2;
 import lessons.Lesson3;
+import oop.Employee;
 
 public class Main {
 
@@ -33,7 +34,19 @@ public class Main {
 //        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},-2);
 
 //        Lesson3
-        Lesson3 lesson3 = new Lesson3();
+//        Lesson3 lesson3 = new Lesson3();
+//
+//        Lesson 5
+        Employee[] employees = new Employee[5];
+        employees[0] = new Employee("Vasya Petrov", "manager1", "qaz@ya.ru", "+79250009925", 250.45, 99 );
+        employees[1] = new Employee("Petya Vasichkin", "manager2", "qwerty@ya.ru", "+79250009931", 310.12, 31);
+        employees[2] = new Employee("Alla Petrova", "counter", "qsx@ya.ru", "+79250009933", 330.0, 33);
+        employees[3] = new Employee("Polikarp Zaslavskiy", "director", "zxc@ya.ru", "+79250009945", 450.03, 45);
+        employees[4] = new Employee("Kolya Galkin", "waiter", "dsfdsf@ya.ru", "+79250009919", 190.01, 19);
+
+        for (Employee i : employees) {
+            if (i.getAge() > 40) i.printInfoAboutEmployee();
+        }
 
     }
 
