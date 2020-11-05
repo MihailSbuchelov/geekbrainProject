@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Lesson4 {
-    //    public static int SIZE = 5;
-    public static int SIZE = 3;
+        public static int SIZE = 5;
+//    public static int SIZE = 3;
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
