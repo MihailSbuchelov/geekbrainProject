@@ -8,19 +8,19 @@ public class Dog extends Animal {
 
     @Override
     public void run(double distance) {
-        if (distance > this.runLim) System.out.println("run: false");
+        if (distance > this.getRunLim()) System.out.println("run: false");
         System.out.println("run: true");
     }
 
     @Override
     public void swim(double distance) {
-        if (distance > this.swimLim) System.out.println("run: false");
+        if (distance > this.getSwimLim()) System.out.println("run: false");
         System.out.println("swim: true");
     }
 
     @Override
     public void jump(double height) {
-        if (height > this.jumpLim) System.out.println("jump: false");
+        if (height > this.getJumpLim()) System.out.println("jump: false");
         System.out.println("jump: true");
     }
 }

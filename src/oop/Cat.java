@@ -8,7 +8,7 @@ public class Cat extends Animal {
 
     @Override
     public void run(double distance) {
-        if (distance > this.runLim) System.out.println("run: false");
+        if (distance > this.getRunLim()) System.out.println("run: false");
         System.out.println("run: true");
     }
 
@@ -19,7 +19,7 @@ public class Cat extends Animal {
 
     @Override
     public void jump(double height) {
-        if (height > this.swimLim) System.out.println("jump: false");
+        if (height > this.getSwimLim()) System.out.println("jump: false");
         System.out.println("jump: true");
     }
 }
