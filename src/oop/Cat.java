@@ -19,7 +19,7 @@ public class Cat extends Animal {
 
     @Override
     public void jump(double height) {
-        if (height > this.getSwimLim()) System.out.println("jump: false");
+        if (height > this.getJumpLim()) System.out.println("jump: false");
         System.out.println("jump: true");
     }
 }

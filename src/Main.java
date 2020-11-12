@@ -54,6 +54,7 @@ public class Main {
         dog1.run(120);
         Cat cat1 = new Cat(200, 2);
         cat1.swim(30);
+        cat1.jump(2);
     }
 
 }
