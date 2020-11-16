@@ -20,7 +20,7 @@ public class Plate {
             System.out.println("Meal is not more! You must add meals in the plate!");
             return false;
         } else {
-            this.setValue(this.getValue() - value);
+            this.setValue(this.value - value);
             System.out.println(String.format("The cat ate %s meals", value));
             return true;
         }
