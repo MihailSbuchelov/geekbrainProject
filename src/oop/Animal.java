@@ -2,9 +2,9 @@ package oop;
 
 public abstract class Animal {
 
-    private double runLim;
-    private double swimLim;
-    private double jumpLim;
+    protected double runLim;
+    protected double swimLim;
+    protected double jumpLim;
 
     public Animal(double runLim, double swimLim, double jumpLim) {
         this.runLim = runLim;
