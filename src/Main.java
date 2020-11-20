@@ -1,15 +1,19 @@
-import lessons.Lesson1;
-import lessons.Lesson2;
-import lessons.Lesson3;
-import oop.Cat;
-import oop.Dog;
-import oop.Employee;
+import level1.oop.Dog;
+import level2.lesson1.barriers.Course;
+import level2.lesson1.barriers.Track;
+import level2.lesson1.barriers.Wall;
+import level2.lesson1.behavior.BarrierBehavior;
+import level2.lesson1.behavior.SportBehavior;
+import level2.lesson1.sportsmen.Cat;
+import level2.lesson1.sportsmen.Man;
+import level2.lesson1.sportsmen.Robot;
+import level2.lesson1.sportsmen.Team;
 
 public class Main {
 
     public static void main(String[] args) {
-
-//Lesson 1
+// Level 1
+// Lesson 1
 //        boolean b = true;
 //        int i = 33;
 //        long l = 12344l;
@@ -35,7 +39,7 @@ public class Main {
 //        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},2);
 //        Lesson2.replaceMassElementsTask7(new int[]{1,2,3,4,5},-2);
 
-//        Lesson3
+// Lesson3
 //        Lesson3 lesson3 = new Lesson3();
 //
 //        Lesson 5
@@ -49,12 +53,25 @@ public class Main {
 //        for (Employee i : employees) {
 //            if (i.getAge() > 40) i.printInfoAboutEmployee();
 //        }
-//        Lesson6
-        Dog dog1 = new Dog(500, 10, 0.5);
-        dog1.run(120);
-        Cat cat1 = new Cat(200, 2);
-        cat1.swim(30);
-        cat1.jump(2);
-    }
+// Lesson6
+//        Dog dog1 = new Dog(500, 10, 0.5);
+//        dog1.run(120);
+//        Cat cat1 = new Cat(200, 2);
+//        cat1.swim(30);
+//        cat1.jump(2);
 
+// Level 2
+// Lesson1
+        BarrierBehavior[] barrierBehaviors = new BarrierBehavior[]{
+                new Wall(55),
+                new Track(101),
+                new Wall(200)};
+        Team team = new Team("dreamTeam", new SportBehavior[]{
+                new Robot("Robot1", 100, 56),
+                new Man("Man1", 500, 201),
+                new Cat("Cat1", 56, 300)});
+        new Course(barrierBehaviors).dolt(team);
+        team.showInfoTeam();
+        team.showResult();
+    }
 }
