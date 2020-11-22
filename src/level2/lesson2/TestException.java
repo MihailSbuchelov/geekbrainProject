@@ -13,7 +13,7 @@ public class TestException {
             try {
                 result = result + Integer.parseInt(strings);
             } catch (NumberFormatException e) {
-                throw new MyArrayDataException(String.format("Incorrect dates = '%s' in the [%s] element", strings, i));
+                throw new MyArrayDataException(String.format("Incorrect dates = '%s' in the [%s] element", strings, i), e);
             }
         }
         return result;
