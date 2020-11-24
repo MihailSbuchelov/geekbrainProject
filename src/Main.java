@@ -8,6 +8,9 @@ import level2.lesson1.sportsmen.Cat;
 import level2.lesson1.sportsmen.Man;
 import level2.lesson1.sportsmen.Robot;
 import level2.lesson1.sportsmen.Team;
+import level2.lesson2.MyArrayDataException;
+import level2.lesson2.MyArraySizeException;
+import level2.lesson2.TestException;
 
 public class Main {
 
@@ -62,16 +65,24 @@ public class Main {
 
 // Level 2
 // Lesson1
-        BarrierBehavior[] barrierBehaviors = new BarrierBehavior[]{
-                new Wall(55),
-                new Track(101),
-                new Wall(200)};
-        Team team = new Team("dreamTeam", new SportBehavior[]{
-                new Robot("Robot1", 100, 56),
-                new Man("Man1", 500, 201),
-                new Cat("Cat1", 56, 300)});
-        new Course(barrierBehaviors).dolt(team);
-        team.showInfoTeam();
-        team.showResult();
+//        BarrierBehavior[] barrierBehaviors = new BarrierBehavior[]{
+//                new Wall(55),
+//                new Track(101),
+//                new Wall(200)};
+//        Team team = new Team("dreamTeam", new SportBehavior[]{
+//                new Robot("Robot1", 100, 56),
+//                new Man("Man1", 500, 201),
+//                new Cat("Cat1", 56, 300)});
+//        new Course(barrierBehaviors).dolt(team);
+//        team.showInfoTeam();
+//        team.showResult();
+// Lesson2
+        try {
+            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "be-be", "3", "4"}));
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "33", "3", "4"}));
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "3", "3", "4","23"}));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            e.printStackTrace();
+        }
     }
 }
