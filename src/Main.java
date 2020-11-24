@@ -80,7 +80,7 @@ public class Main {
 // Lesson3
 // task1
         ArrayCollectionTest arrayCollectionTest = new ArrayCollectionTest(new String[]{"test", "test", "test2",
-                "test3", "test5", "test5", "test4"});
+                "test3", "test5", "test5", "test4","test4","test4","test4"});
         arrayCollectionTest.printUniqElements();
 
         Iterator iterator = arrayCollectionTest.calcCountForEachElement().entrySet().iterator();
