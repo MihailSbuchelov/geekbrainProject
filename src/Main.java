@@ -78,11 +78,23 @@ public class Main {
 //        team.showResult();
 // Lesson2
         try {
-            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "be-be", "3", "4"}));
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "33", "3", "4"}));
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "3", "3", "4","23"}));
-        } catch (MyArraySizeException | MyArrayDataException e) {
-            e.printStackTrace();
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+//                    {"2","33","3","2"},
+//                    {"3","23","23","23","23","23"},
+//                    {"3","2","3","23"},
+//                    {"4","0","3","2"}}));
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+//                    {"2", "33", "3", "2"},
+//                    {"3", "23", "23", "be-be"},
+//                    {"3", "2", "3", "23"},
+//                    {"4", "0", "3", "2"}}));
+            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+                    {"2", "33", "3", "2"},
+                    {"3", "23", "23", "3"},
+                    {"3", "2", "3", "23"},
+                    {"4", "0", "3", "2"}}));
+        } catch(MyArraySizeException | MyArrayDataException e){
+                e.printStackTrace();
+            }
         }
     }
-}
