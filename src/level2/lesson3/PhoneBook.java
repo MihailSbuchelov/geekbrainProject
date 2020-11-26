@@ -1,24 +1,24 @@
 package level2.lesson3;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PhoneBook {
-    private List<PhoneLine> phoneBook;
+    private Map<String, String> phoneBook;
 
     public PhoneBook() {
-        this.phoneBook = new ArrayList<>();
+        this.phoneBook = new HashMap<>();
     }
 
-    public void add(String name, String number) {
-        this.phoneBook.add(new PhoneLine(name, number));
+    public void add(String number, String name) {
+        this.phoneBook.put(number, name);
     }
 
     public String getPhone(String name) {
         String valueNumber = "";
-        for (PhoneLine phoneLine : phoneBook) {
-            if (phoneLine.name.equals(name)) {
-                valueNumber += phoneLine.telephone + "; ";
+        for (Map.Entry<String, String> val : this.phoneBook.entrySet()) {
+            if (val.getValue().equals(name)) {
+                valueNumber += val.getKey() + "; ";
             }
         }
         return valueNumber;

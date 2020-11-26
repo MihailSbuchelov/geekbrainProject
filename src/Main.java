@@ -80,24 +80,20 @@ public class Main {
 // Lesson3
 // task1
         ArrayCollectionTest arrayCollectionTest = new ArrayCollectionTest(new String[]{"test", "test", "test2",
-                "test3", "test5", "test5", "test4","test4","test4","test4"});
+                "test3", "test5", "test5", "test4", "test4", "test4", "test4"});
         arrayCollectionTest.printUniqElements();
-
-        Iterator iterator = arrayCollectionTest.calcCountForEachElement().entrySet().iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next().toString());
-        }
+        System.out.println(arrayCollectionTest.calcCountForEachElement());
 // task2
         PhoneBook phoneBook = new PhoneBook();
-        phoneBook.add("Sbuchelov", "+7 925 064 3983");
-        phoneBook.add("Sbuchelov", "+7 925 064 3984");
-        phoneBook.add("Petrov", "+7 925 064 2222");
-        phoneBook.add("Ivanov", "+7 925 064 3333");
-        phoneBook.add("Sidorov", "+7 925 064 4444");
+        phoneBook.add("+7 925 064 3983", "Sbuchelov");
+        phoneBook.add("+7 925 064 3984", "Sbuchelov");
+        phoneBook.add("+7 925 064 2222", "Petrov");
+        phoneBook.add("+7 925 064 3333", "Ivanov");
+        phoneBook.add("+7 925 064 4444", "Sidorov");
 
         String name1 = "Sbuchelov";
         String name2 = "Petrov";
-        System.out.println(String.format("%s :%s", name1, phoneBook.getPhone(name1)));
-        System.out.println(String.format("%s :%s", name2, phoneBook.getPhone(name2)));
+        System.out.println(String.format("%s: %s", name1, phoneBook.getPhone(name1)));
+        System.out.println(String.format("%s: %s", name2, phoneBook.getPhone(name2)));
     }
 }
