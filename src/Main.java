@@ -11,6 +11,10 @@ import level2.lesson1.sportsmen.Team;
 import level2.lesson2.MyArrayDataException;
 import level2.lesson2.MyArraySizeException;
 import level2.lesson2.TestException;
+import level2.lesson3.ArrayCollectionTest;
+import level2.lesson3.PhoneBook;
+
+import java.util.Iterator;
 
 public class Main {
 
@@ -78,16 +82,16 @@ public class Main {
 //        team.showResult();
 // Lesson2
         try {
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
-//                    {"2","33","3","2"},
-//                    {"3","23","23","23","23","23"},
-//                    {"3","2","3","23"},
-//                    {"4","0","3","2"}}));
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
-//                    {"2", "33", "3", "2"},
-//                    {"3", "23", "23", "be-be"},
-//                    {"3", "2", "3", "23"},
-//                    {"4", "0", "3", "2"}}));
+            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+                    {"2","33","3","2"},
+                    {"3","23","23","23","23","23"},
+                    {"3","2","3","23"},
+                    {"4","0","3","2"}}));
+            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+                    {"2", "33", "3", "2"},
+                    {"3", "23", "23", "be-be"},
+                    {"3", "2", "3", "23"},
+                    {"4", "0", "3", "2"}}));
             System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
                     {"2", "33", "3", "2"},
                     {"3", "23", "23", "3"},
@@ -98,34 +102,28 @@ public class Main {
             }
         }
     }
-//        try {
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "be-be", "3", "4"}));
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "33", "3", "4"}));
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "3", "3", "4","23"}));
-//        } catch (MyArraySizeException | MyArrayDataException e) {
-//            e.printStackTrace();
-//        }
 // Lesson3
 // task1
-        ArrayCollectionTest arrayCollectionTest = new ArrayCollectionTest(new String[]{"test", "test", "test2",
-                "test3", "test5", "test5", "test4","test4","test4","test4"});
-        arrayCollectionTest.printUniqElements();
-
-        Iterator iterator = arrayCollectionTest.calcCountForEachElement().entrySet().iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next().toString());
-        }
+//        ArrayCollectionTest arrayCollectionTest = new ArrayCollectionTest(new String[]{"test", "test", "test2",
+//                "test3", "test5", "test5", "test4","test4","test4","test4"});
+//        arrayCollectionTest.printUniqElements();
+//
+//
+//    Iterator iterator = arrayCollectionTest.calcCountForEachElement().entrySet().iterator();
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next().toString());
+//        }
 // task2
-        PhoneBook phoneBook = new PhoneBook();
-        phoneBook.add("Sbuchelov", "+7 925 064 3983");
-        phoneBook.add("Sbuchelov", "+7 925 064 3984");
-        phoneBook.add("Petrov", "+7 925 064 2222");
-        phoneBook.add("Ivanov", "+7 925 064 3333");
-        phoneBook.add("Sidorov", "+7 925 064 4444");
-
-        String name1 = "Sbuchelov";
-        String name2 = "Petrov";
-        System.out.println(String.format("%s :%s", name1, phoneBook.getPhone(name1)));
-        System.out.println(String.format("%s :%s", name2, phoneBook.getPhone(name2)));
-    }
-}
+//        PhoneBook phoneBook = new PhoneBook();
+//        phoneBook.add("Sbuchelov", "+7 925 064 3983");
+//        phoneBook.add("Sbuchelov", "+7 925 064 3984");
+//        phoneBook.add("Petrov", "+7 925 064 2222");
+//        phoneBook.add("Ivanov", "+7 925 064 3333");
+//        phoneBook.add("Sidorov", "+7 925 064 4444");
+//
+//        String name1 = "Sbuchelov";
+//        String name2 = "Petrov";
+//        System.out.println(String.format("%s :%s", name1, phoneBook.getPhone(name1)));
+//        System.out.println(String.format("%s :%s", name2, phoneBook.getPhone(name2)));
+//    }
+//}
