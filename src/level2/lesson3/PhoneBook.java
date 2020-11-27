@@ -20,6 +20,6 @@ public class PhoneBook {
     }
 
     public Set<String> getPhones(String name) {
-        return this.phoneBook.getOrDefault(name, Collections.EMPTY_SET);
+        return this.phoneBook.getOrDefault(name, Collections.emptySet());
     }
 }
