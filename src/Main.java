@@ -1,9 +1,8 @@
-import com.sun.javafx.collections.VetoableListDecorator;
 import level2.lesson3.ArrayCollectionTest;
 import level2.lesson3.PhoneBook;
 
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
@@ -85,15 +84,25 @@ public class Main {
         System.out.println(arrayCollectionTest.calcCountForEachElement());
 // task2
         PhoneBook phoneBook = new PhoneBook();
-        phoneBook.add("+7 925 064 3983", "Sbuchelov");
-        phoneBook.add("+7 925 064 3984", "Sbuchelov");
-        phoneBook.add("+7 925 064 2222", "Petrov");
-        phoneBook.add("+7 925 064 3333", "Ivanov");
-        phoneBook.add("+7 925 064 4444", "Sidorov");
+        Set<String> num1 = new HashSet<>();
+        Set<String> num2 = new HashSet<>();
+        Set<String> num3 = new HashSet<>();
+        Set<String> num4 = new HashSet<>();
+
+        num1.add("+7 925 064 3983");
+        num1.add("+7 925 064 3984");
+        num2.add("+7 925 064 2222");
+        num3.add("+7 925 064 3333");
+        num4.add("+7 925 064 4444");
+
+        phoneBook.add("Sbuchelov", num1);
+        phoneBook.add("Sidorov", num2);
+        phoneBook.add("Petrov", num3);
+        phoneBook.add("Ivanov", num4);
 
         String name1 = "Sbuchelov";
         String name2 = "Petrov";
-        System.out.println(String.format("%s: %s", name1, phoneBook.getPhone(name1)));
-        System.out.println(String.format("%s: %s", name2, phoneBook.getPhone(name2)));
+        System.out.println(String.format("%s: %s", name1, phoneBook.getPhones(name1)));
+        System.out.println(String.format("%s: %s", name2, phoneBook.getPhones(name2)));
     }
 }
