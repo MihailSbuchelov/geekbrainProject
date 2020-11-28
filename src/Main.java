@@ -1,4 +1,17 @@
 import level2.lesson3.ArrayCollectionTest;
+import level1.oop.Dog;
+import level2.lesson1.barriers.Course;
+import level2.lesson1.barriers.Track;
+import level2.lesson1.barriers.Wall;
+import level2.lesson1.behavior.BarrierBehavior;
+import level2.lesson1.behavior.SportBehavior;
+import level2.lesson1.sportsmen.Cat;
+import level2.lesson1.sportsmen.Man;
+import level2.lesson1.sportsmen.Robot;
+import level2.lesson1.sportsmen.Team;
+import level2.lesson2.MyArrayDataException;
+import level2.lesson2.MyArraySizeException;
+import level2.lesson2.TestException;
 import level2.lesson3.PhoneBook;
 
 import java.util.HashSet;
@@ -70,12 +83,26 @@ public class Main {
 //        team.showResult();
 // Lesson2
 //        try {
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "be-be", "3", "4"}));
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "33", "3", "4"}));
-//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[]{"2", "3", "3", "4","23"}));
-//        } catch (MyArraySizeException | MyArrayDataException e) {
-//            e.printStackTrace();
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+//                    {"2","33","3","2"},
+//                    {"3","23","23","23","23","23"},
+//                    {"3","2","3","23"},
+//                    {"4","0","3","2"}}));
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+//                    {"2", "33", "3", "2"},
+//                    {"3", "23", "23", "be-be"},
+//                    {"3", "2", "3", "23"},
+//                    {"4", "0", "3", "2"}}));
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+//                    {"2", "33", "3", "2"},
+//                    {"3", "23", "23", "3"},
+//                    {"3", "2", "3", "23"},
+//                    {"4", "0", "3", "2"}}));
+//        } catch(MyArraySizeException | MyArrayDataException e){
+//                e.printStackTrace();
+//            }
 //        }
+//    }
 // Lesson3
 // task1
         ArrayCollectionTest arrayCollectionTest = new ArrayCollectionTest(new String[]{"test", "test", "test2",
