@@ -1,3 +1,4 @@
+import level2.lesson3.ArrayCollectionTest;
 import level1.oop.Dog;
 import level2.lesson1.barriers.Course;
 import level2.lesson1.barriers.Track;
@@ -11,10 +12,10 @@ import level2.lesson1.sportsmen.Team;
 import level2.lesson2.MyArrayDataException;
 import level2.lesson2.MyArraySizeException;
 import level2.lesson2.TestException;
-import level2.lesson3.ArrayCollectionTest;
 import level2.lesson3.PhoneBook;
 
-import java.util.Iterator;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
@@ -104,26 +105,22 @@ public class Main {
     }
 // Lesson3
 // task1
-//        ArrayCollectionTest arrayCollectionTest = new ArrayCollectionTest(new String[]{"test", "test", "test2",
-//                "test3", "test5", "test5", "test4","test4","test4","test4"});
-//        arrayCollectionTest.printUniqElements();
-//
-//
-//    Iterator iterator = arrayCollectionTest.calcCountForEachElement().entrySet().iterator();
-//        while (iterator.hasNext()) {
-//            System.out.println(iterator.next().toString());
-//        }
+        ArrayCollectionTest arrayCollectionTest = new ArrayCollectionTest(new String[]{"test", "test", "test2",
+                "test3", "test5", "test5", "test4", "test4", "test4", "test4"});
+        arrayCollectionTest.printUniqElements();
+        System.out.println(arrayCollectionTest.calcCountForEachElement());
 // task2
-//        PhoneBook phoneBook = new PhoneBook();
-//        phoneBook.add("Sbuchelov", "+7 925 064 3983");
-//        phoneBook.add("Sbuchelov", "+7 925 064 3984");
-//        phoneBook.add("Petrov", "+7 925 064 2222");
-//        phoneBook.add("Ivanov", "+7 925 064 3333");
-//        phoneBook.add("Sidorov", "+7 925 064 4444");
-//
-//        String name1 = "Sbuchelov";
-//        String name2 = "Petrov";
-//        System.out.println(String.format("%s :%s", name1, phoneBook.getPhone(name1)));
-//        System.out.println(String.format("%s :%s", name2, phoneBook.getPhone(name2)));
-//    }
-//}
+        PhoneBook phoneBook = new PhoneBook();
+
+        phoneBook.add("Sbuchelov", "+7 925 064 3983");
+        phoneBook.add("Sbuchelov", "+7 925 064 3984");
+        phoneBook.add("Sidorov", "+7 925 064 2222");
+        phoneBook.add("Petrov", "+7 925 064 3333");
+        phoneBook.add("Ivanov", "+7 925 064 4444");
+
+        String name1 = "Sbuchelov";
+        String name2 = "Petrov";
+        System.out.println(String.format("%s: %s", name1, phoneBook.getPhones(name1)));
+        System.out.println(String.format("%s: %s", name2, phoneBook.getPhones(name2)));
+    }
+}

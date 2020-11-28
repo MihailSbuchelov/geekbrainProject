@@ -1,26 +1,25 @@
 package level2.lesson3;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PhoneBook {
-    private List<PhoneLine> phoneBook;
+    private Map<String, Set<String>> phoneBook;
 
     public PhoneBook() {
-        this.phoneBook = new ArrayList<>();
+        this.phoneBook = new HashMap<>();
     }
 
     public void add(String name, String number) {
-        this.phoneBook.add(new PhoneLine(name, number));
+        if (phoneBook.containsKey(name)) {
+            phoneBook.get(name).add(number);
+            return;
+        }
+        Set<String> numbers = new HashSet<>();
+        numbers.add(number);
+        phoneBook.put(name, numbers);
     }
 
-    public String getPhone(String name) {
-        String valueNumber = "";
-        for (PhoneLine phoneLine : phoneBook) {
-            if (phoneLine.name.equals(name)) {
-                valueNumber += phoneLine.telephone + "; ";
-            }
-        }
-        return valueNumber;
+    public Set<String> getPhones(String name) {
+        return this.phoneBook.getOrDefault(name, Collections.emptySet());
     }
 }
