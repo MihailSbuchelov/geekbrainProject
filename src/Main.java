@@ -82,27 +82,27 @@ public class Main {
 //        team.showInfoTeam();
 //        team.showResult();
 // Lesson2
-        try {
-            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
-                    {"2","33","3","2"},
-                    {"3","23","23","23","23","23"},
-                    {"3","2","3","23"},
-                    {"4","0","3","2"}}));
-            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
-                    {"2", "33", "3", "2"},
-                    {"3", "23", "23", "be-be"},
-                    {"3", "2", "3", "23"},
-                    {"4", "0", "3", "2"}}));
-            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
-                    {"2", "33", "3", "2"},
-                    {"3", "23", "23", "3"},
-                    {"3", "2", "3", "23"},
-                    {"4", "0", "3", "2"}}));
-        } catch(MyArraySizeException | MyArrayDataException e){
-                e.printStackTrace();
-            }
-        }
-    }
+//        try {
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+//                    {"2","33","3","2"},
+//                    {"3","23","23","23","23","23"},
+//                    {"3","2","3","23"},
+//                    {"4","0","3","2"}}));
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+//                    {"2", "33", "3", "2"},
+//                    {"3", "23", "23", "be-be"},
+//                    {"3", "2", "3", "23"},
+//                    {"4", "0", "3", "2"}}));
+//            System.out.println("Calculated result: " + TestException.doMassWithExceptions(new String[][]{
+//                    {"2", "33", "3", "2"},
+//                    {"3", "23", "23", "3"},
+//                    {"3", "2", "3", "23"},
+//                    {"4", "0", "3", "2"}}));
+//        } catch(MyArraySizeException | MyArrayDataException e){
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 // Lesson3
 // task1
         ArrayCollectionTest arrayCollectionTest = new ArrayCollectionTest(new String[]{"test", "test", "test2",
