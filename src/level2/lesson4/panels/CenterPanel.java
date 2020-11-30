@@ -10,7 +10,7 @@ public class CenterPanel {
     private JTextArea lines;
 
     public CenterPanel(JTextArea lines) {
-        panel = new JPanel();
+        this.panel = new JPanel();
         this.lines = lines;
         init();
     }
@@ -20,6 +20,7 @@ public class CenterPanel {
     }
 
     private void init() {
+        lines.setEditable(false);
         panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
         panel.setLayout(new BorderLayout());
         panel.add(lines);

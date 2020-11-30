@@ -1,6 +1,6 @@
 package level2.lesson4.panels;
 
-import level2.lesson4.listeners.EnterPressedButton;
+import level2.lesson4.listeners.InputTextPressedButton;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -20,12 +20,12 @@ public class BottomPanel {
     private void initPanel(JTextArea jTextArea) {
         this.massages = jTextArea;
         panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-        panel.setLayout(new GridLayout());
+        panel.setLayout(new BorderLayout());
         JButton enterButton = new JButton("Отправить");
-        enterButton.addActionListener(new EnterPressedButton(massages, textMassage));
-        textMassage.addActionListener(new EnterPressedButton(massages, textMassage));
-        panel.add(textMassage);
-        panel.add(enterButton);
+        enterButton.addActionListener(new InputTextPressedButton(massages, textMassage));
+        textMassage.addActionListener(new InputTextPressedButton(massages, textMassage));
+        panel.add(textMassage, BorderLayout.CENTER);
+        panel.add(enterButton, BorderLayout.EAST);
     }
 
     public JPanel getPanel() {

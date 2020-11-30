@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EnterPressedButton implements ActionListener {
+public class InputTextPressedButton implements ActionListener {
     private JTextArea massages;
     private JTextField textMassage;
 
-    public EnterPressedButton(JTextArea massages, JTextField textMassage) {
+    public InputTextPressedButton(JTextArea massages, JTextField textMassage) {
         this.massages = massages;
         this.textMassage = textMassage;
     }
