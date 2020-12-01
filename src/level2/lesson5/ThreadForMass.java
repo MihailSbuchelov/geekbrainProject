@@ -1,9 +1,9 @@
 package level2.lesson5;
 
-public class ConcurrencyTest2 implements Runnable {
+public class ThreadForMass implements Runnable {
     float[] arr;
 
-    public ConcurrencyTest2(float[] arr) {
+    public ThreadForMass(float[] arr) {
         this.arr = arr;
     }
 

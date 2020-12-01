@@ -13,15 +13,24 @@ public class ConcurrencyTest {
         float[] arr = initialMass();
         float[] a1 = new float[h];
         float[] a2 = new float[h];
+
+        splitMass(a1, a2, arr);
+        synchronized (arr) {
+            new Thread(new ThreadForMass(a1)).start();
+            new Thread(new ThreadForMass(a2)).start();
+        }
+        concatMass(a1, a2, arr);
+    }
+
+    private static void splitMass(float[] a1, float[] a2, float[] arr) {
         long a = System.currentTimeMillis();
         System.arraycopy(arr, 0, a1, 0, h);
         System.arraycopy(arr, h, a2, 0, h);
         long b = (System.currentTimeMillis() - a) / 1000;
         System.out.println(String.format("Split the source mass in %s sec", b));
+    }
 
-        new Thread(new ConcurrencyTest2(a1)).start();
-        new Thread(new ConcurrencyTest2(a2)).start();
-
+    private static void concatMass(float[] a1, float[] a2, float[] arr) {
         long c = System.currentTimeMillis();
         System.arraycopy(a1, 0, arr, 0, h);
         System.arraycopy(a2, 0, arr, h, h);
