@@ -15,9 +15,19 @@ public class ConcurrencyTest {
         float[] a2 = new float[h];
 
         splitMass(a1, a2, arr);
-        synchronized (arr) {
-            new Thread(new ThreadForMass(a1)).start();
-            new Thread(new ThreadForMass(a2)).start();
+        Thread t1 = new Thread(new ThreadForMass(a1));
+        Thread t2 = new Thread(new ThreadForMass(a2));
+        t1.start();
+        t2.start();
+
+        while (t1.isAlive() || t2.isAlive())
+        {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Working calculate..");
         }
         concatMass(a1, a2, arr);
     }
