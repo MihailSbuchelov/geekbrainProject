@@ -35,11 +35,6 @@ public class ServerChat implements Chat {
                 scanner = new Scanner(System.in);
                 String words = scanner.nextLine();
                 this.broadcastMessage("[Server]: " + words);
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }).start();
     }
