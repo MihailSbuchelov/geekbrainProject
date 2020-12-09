@@ -8,9 +8,9 @@ public class AuthenticationService {
 
     public AuthenticationService() {
         entries = new HashSet<>();
-        entries.add(new CredentialsEntry("l1", "p1", "name1"));
-        entries.add(new CredentialsEntry("l2", "p2", "name2"));
-        entries.add(new CredentialsEntry("l3", "p3", "name3"));
+        entries.add(new CredentialsEntry("l1", "p1", "n1"));
+        entries.add(new CredentialsEntry("l2", "p2", "n2"));
+        entries.add(new CredentialsEntry("l3", "p3", "n3"));
     }
 
     public String findNicknameByLoginAndPassword(String login, String password) {
