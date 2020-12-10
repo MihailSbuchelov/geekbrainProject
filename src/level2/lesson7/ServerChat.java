@@ -49,7 +49,10 @@ public class ServerChat implements Chat {
         }
 
         for (ClientHandler c : clients) {
-            if (c.getName().equals(name)) c.sendMessage(personalMessage);
+            if (c.getName().equals(name)) {
+                c.sendMessage(personalMessage);
+                return;
+            }
         }
     }
 
