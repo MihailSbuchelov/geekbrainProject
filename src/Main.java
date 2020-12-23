@@ -1,22 +1,7 @@
-import level2.lesson3.ArrayCollectionTest;
-import level1.oop.Dog;
-import level2.lesson1.barriers.Course;
-import level2.lesson1.barriers.Track;
-import level2.lesson1.barriers.Wall;
-import level2.lesson1.behavior.BarrierBehavior;
-import level2.lesson1.behavior.SportBehavior;
-import level2.lesson1.sportsmen.Cat;
-import level2.lesson1.sportsmen.Man;
-import level2.lesson1.sportsmen.Robot;
-import level2.lesson1.sportsmen.Team;
-import level2.lesson2.MyArrayDataException;
-import level2.lesson2.MyArraySizeException;
-import level2.lesson2.TestException;
-import level2.lesson3.PhoneBook;
-import level2.lesson5.ConcurrencyTest;
-
-import java.util.HashSet;
-import java.util.Set;
+import level3.lesson1.task3.Apple;
+import level3.lesson1.task3.FruitBox;
+import level3.lesson1.task3.Orange;
+import level3.lesson1.tasks1and2.GenTest;
 
 public class Main {
 
@@ -124,7 +109,28 @@ public class Main {
 //        System.out.println(String.format("%s: %s", name1, phoneBook.getPhones(name1)));
 //        System.out.println(String.format("%s: %s", name2, phoneBook.getPhones(name2)));
 // Lesson 5
-        ConcurrencyTest.processingMassWithoutConcurrency();
-        ConcurrencyTest.processingMassWithConcurrency();
+//        ConcurrencyTest.processingMassWithoutConcurrency();
+//        ConcurrencyTest.processingMassWithConcurrency();
+// Level 3
+// Lesson1
+// task1, task2
+        GenTest gt = new GenTest();
+        gt.printInfoArray();
+        gt.changeArrayToArrayList(gt.changePositionForArrayObj(1, 3));
+        gt.printInfoArrayList();
+// task 3
+        FruitBox<Apple> appleBox = new FruitBox(new Apple());
+        FruitBox<Orange> orangeBox = new FruitBox(new Orange());
+        appleBox.putFruit(new Apple());
+        appleBox.putFruit(new Apple());
+        appleBox.putFruit(new Apple());
+        orangeBox.putFruit(new Orange());
+        orangeBox.putFruit(new Orange());
+        orangeBox.putFruit(new Orange());
+
+        System.out.println(appleBox.getWeightBox());
+        System.out.println(orangeBox.getWeightBox());
+        if (appleBox.compare(orangeBox)) System.out.println("Equal boxes");
+        System.out.println("Not equal boxes");
     }
 }
