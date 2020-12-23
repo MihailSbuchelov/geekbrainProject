@@ -130,7 +130,7 @@ public class Main {
 
         System.out.println(appleBox.getWeightBox());
         System.out.println(orangeBox.getWeightBox());
-        if (appleBox.compare(orangeBox)) System.out.println("Equal boxes");
-        System.out.println("Not equal boxes");
+        String value = (appleBox.compare(orangeBox)) ? "Equal boxes" : "Not equal boxes";
+        System.out.println(value);
     }
 }
