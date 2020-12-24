@@ -17,14 +17,13 @@ public class FruitBox<T extends Fruit> {
     }
 
     public List<T> putFruit(T fruitElement) {
-        try {
-            box.add((T) fruitElement.getClass().newInstance());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        box.add(fruitElement);
         return box;
+    }
+
+    public void moveFruit(FruitBox<T> fruitForMove) {
+        box.addAll(fruitForMove.getBox());
+        fruitForMove.getBox().clear();
     }
 
     public float getWeightBox() {

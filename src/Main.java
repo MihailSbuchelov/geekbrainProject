@@ -120,6 +120,7 @@ public class Main {
         gt.printInfoArrayList();
 // task 3
         FruitBox<Apple> appleBox = new FruitBox(new Apple());
+        FruitBox<Apple> appleBox1 = new FruitBox(new Apple());
         FruitBox<Orange> orangeBox = new FruitBox(new Orange());
         appleBox.putFruit(new Apple());
         appleBox.putFruit(new Apple());
@@ -132,5 +133,10 @@ public class Main {
         System.out.println(orangeBox.getWeightBox());
         String value = (appleBox.compare(orangeBox)) ? "Equal boxes" : "Not equal boxes";
         System.out.println(value);
+
+        System.out.println("````````````````````````````````````````````");
+        System.out.println("Apple box weight before moved from another fruit box: " + appleBox.getWeightBox());
+        appleBox.moveFruit(appleBox1);
+        System.out.println("Apple box weight after moved from another fruit box: " + appleBox.getWeightBox());
     }
 }
