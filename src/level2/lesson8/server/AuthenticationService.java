@@ -1,20 +1,16 @@
 package level2.lesson8.server;
 
-import java.util.HashSet;
-import java.util.Set;
+import level2.lesson8.database.UserRepository;
 
 public class AuthenticationService {
-    private Set<CredentialsEntry> entries;
+    private UserRepository users;
 
     public AuthenticationService() {
-        entries = new HashSet<>();
-        entries.add(new CredentialsEntry("l1", "p1", "n1"));
-        entries.add(new CredentialsEntry("l2", "p2", "n2"));
-        entries.add(new CredentialsEntry("l3", "p3", "n3"));
+        users = new UserRepository();
     }
 
     public String findNicknameByLoginAndPassword(String login, String password) {
-        for (CredentialsEntry entry : entries) {
+        for (CredentialsEntry entry : users.findAll()) {
             if (entry.getLogin().equals(login) && entry.getPassword().equals(password)) {
                 return entry.getNickname();
             }
