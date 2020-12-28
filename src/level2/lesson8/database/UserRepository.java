@@ -1,6 +1,6 @@
 package level2.lesson8.database;
 
-import level2.lesson8.server.AuthenticationService;
+import level2.lesson8.server.AuthenticationService.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,17 +12,17 @@ import java.util.List;
 public class UserRepository {
 
 
-    public List<AuthenticationService.CredentialsEntry> findAll() {
+    public List<CredentialsEntry> findAll() {
         Connection connection = ConnectionService.connect();
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM USER");
 
             ResultSet rs = statement.executeQuery();
-            List<AuthenticationService.CredentialsEntry> users = new ArrayList<>();
+            List<CredentialsEntry> users = new ArrayList<>();
 
             while (rs.next()) {
                 users.add(
-                        new AuthenticationService.CredentialsEntry(
+                        new CredentialsEntry(
                                 rs.getString("login"),
                                 rs.getString("pass"),
                                 rs.getString("nickName"))
@@ -38,7 +38,7 @@ public class UserRepository {
         }
     }
 
-    public AuthenticationService.CredentialsEntry findByName(String name) {
+    public CredentialsEntry findByName(String name) {
         Connection connection = ConnectionService.connect();
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM USER WHERE NAME = ?");
@@ -46,7 +46,7 @@ public class UserRepository {
 
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                return new AuthenticationService.CredentialsEntry(
+                return new CredentialsEntry(
                         rs.getString("login"),
                         rs.getString("pass"),
                         rs.getString("nickName")
@@ -54,6 +54,22 @@ public class UserRepository {
             }
 
             return null;
+        } catch (SQLException e) {
+            throw new RuntimeException("SWW", e);
+        } finally {
+            ConnectionService.close(connection);
+        }
+    }
+
+    public void updateUser(String newName, String oldName) {
+        Connection connection = ConnectionService.connect();
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE USER SET nickName=? " +
+                    "WHERE nickName=?");
+            statement.setString(1, newName);
+            statement.setString(2, oldName);
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException("SWW", e);
         } finally {

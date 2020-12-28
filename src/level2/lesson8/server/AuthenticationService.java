@@ -18,6 +18,10 @@ public class AuthenticationService {
         return null;
     }
 
+    public void updateNickname(String newName, String oldName) {
+        users.updateUser(newName, oldName);
+    }
+
     public static class CredentialsEntry {
         private String login;
         private String password;

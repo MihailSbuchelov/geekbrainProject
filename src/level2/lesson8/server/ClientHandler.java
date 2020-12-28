@@ -108,7 +108,7 @@ public class ClientHandler {
         }
     }
 
-    public void receiveMessage() {
+    public synchronized void receiveMessage() {
         while (true) {
             try {
                 String message = in.readUTF();
@@ -117,10 +117,24 @@ public class ClientHandler {
                     chat.broadcastMessage(String.format("[%s] logged out", name));
                     break;
                 }
+                if (message.startsWith("-ch")) {
+                    String oldName = this.getName();
+                    String newName = message.split("\\s")[1];
+                    if (!chat.isNicknameOccupied(newName)) {
+                        chat.getAuthenticationService().updateNickname(newName, oldName);
+                        this.setName(newName);
+                    } else {
+                        System.out.println("[INFO] Current user is already logged in.");
+                    }
+                }
                 chat.broadcastMessage(String.format("[%s]: %s", name, message));
             } catch (IOException e) {
                 throw new RuntimeException("SWW", e);
             }
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
