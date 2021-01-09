@@ -10,10 +10,9 @@ public class AuthenticationService {
     }
 
     public String findNicknameByLoginAndPassword(String login, String password) {
-        for (CredentialsEntry entry : users.findAll()) {
-            if (entry.getLogin().equals(login) && entry.getPassword().equals(password)) {
-                return entry.getNickname();
-            }
+        CredentialsEntry user = users.findUser(login, password);
+        if (user != null) {
+            return user.getNickname();
         }
         return null;
     }

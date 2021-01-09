@@ -11,6 +11,28 @@ import java.util.List;
 
 public class UserRepository {
 
+    public CredentialsEntry findUser(String login, String password) {
+        Connection connection = ConnectionService.connect();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM USER WHERE LOGIN = ? AND PASS = ?");
+            statement.setString(1, login);
+            statement.setString(2, password);
+
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                return new CredentialsEntry(
+                        rs.getString("login"),
+                        rs.getString("pass"),
+                        rs.getString("nickName")
+                );
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException("SWW", e);
+        } finally {
+            ConnectionService.close(connection);
+        }
+    }
 
     public List<CredentialsEntry> findAll() {
         Connection connection = ConnectionService.connect();
