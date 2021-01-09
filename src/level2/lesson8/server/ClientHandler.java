@@ -1,9 +1,9 @@
 package level2.lesson8.server;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static java.lang.System.currentTimeMillis;
 
@@ -109,9 +109,11 @@ public class ClientHandler {
     }
 
     public synchronized void receiveMessage() {
+        this.sendMessage(readHistoryFromFile("chat.txt"));
         while (true) {
             try {
                 String message = in.readUTF();
+
                 if (message.startsWith("-exit")) {
                     chat.unsubscribe(this);
                     chat.broadcastMessage(String.format("[%s] logged out", name));
@@ -128,6 +130,7 @@ public class ClientHandler {
                     }
                 }
                 chat.broadcastMessage(String.format("[%s]: %s", name, message));
+                writeHistoryInToTheFile(new File("chat.txt"), String.format("[%s]: %s", name, message));
             } catch (IOException e) {
                 throw new RuntimeException("SWW", e);
             }
@@ -136,5 +139,60 @@ public class ClientHandler {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public synchronized String readHistoryFromFile(String fileName) {
+        String line;
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader(checkFileExist(fileName)))) {
+            while ((line = br.readLine()) != null) {
+                sb.append("\r\n").append(line);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("SWW", e);
+        }
+        return read100LinesFromFile(sb.toString());
+    }
+
+    private String read100LinesFromFile(String result) {
+        String[] resultMass = result.split("\r\n");
+        String returnResult = result;
+        if (resultMass.length >= 100) {
+            returnResult = readFromFileMoreThen100Lines(resultMass);
+        }
+        return returnResult;
+    }
+
+    private String readFromFileMoreThen100Lines(String[] resultMass) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < resultMass.length; i++) {
+            if (i > resultMass.length - 100) {
+                sb.append("\r\n").append(resultMass[i]);
+            }
+        }
+        return sb.toString();
+    }
+
+    public synchronized void writeHistoryInToTheFile(File file, String value) {
+        checkFileExist(file.getAbsolutePath());
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+            bw.newLine();
+            bw.write(value);
+            bw.flush();
+        } catch (Exception e) {
+            throw new RuntimeException("SWW", e);
+        }
+    }
+
+    File checkFileExist(String fileName) {
+        File file = new File(fileName);
+        if (!file.exists()) {
+            try {
+                Files.createFile(Paths.get(fileName));
+            } catch (Exception e) {
+                throw new RuntimeException("SWW", e);
+            }
+        }
+        return file;
     }
 }
