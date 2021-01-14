@@ -2,11 +2,14 @@ package level2.lesson8.client;
 
 import level2.lesson8.gui.ChatFrame;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
 public class ClientChatAdapter {
     private ChatFrame chatFrame;
     private Client client;
+    private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     public ClientChatAdapter(String host, int port) {
         client = new Client(host, port);
@@ -20,7 +23,7 @@ public class ClientChatAdapter {
     }
 
     private void read() {
-        new Thread(() -> {
+        executorService.submit(() -> {
             try {
                 while (true) {
                     chatFrame.append(
@@ -35,6 +38,10 @@ public class ClientChatAdapter {
                     System.exit(0);
                 }
             }
-        }).start();
+        });
+    }
+
+    public void shutDownExecService() {
+        executorService.shutdownNow();
     }
 }
