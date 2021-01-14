@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static java.lang.System.currentTimeMillis;
 
@@ -14,6 +16,7 @@ public class ClientHandler {
     private Socket socket;
     private Chat chat;
     private boolean checkPeriod = false;
+    private ExecutorService executorService = Executors.newCachedThreadPool();
 
     public ClientHandler(Socket socket, Chat chat) {
         this.socket = socket;
@@ -33,17 +36,17 @@ public class ClientHandler {
     }
 
     private void listen() {
-        new Thread(() -> {
+        executorService.submit(() -> {
             checkAuthPeriod();
             doAuth();
             receiveMessage();
-        }).start();
+        });
     }
 
     private synchronized void checkAuthPeriod() {
         long startTime = currentTimeMillis() / 1000;
         long period = 30;
-        new Thread(new Runnable() {
+        executorService.submit(new Runnable() {
             @Override
             public void run() {
                 sendMessage(String.format("[INFO] You didn't register! Connection will close after %s second", period));
@@ -60,7 +63,7 @@ public class ClientHandler {
                     }
                 }
             }
-        }).start();
+        });
     }
 
     private synchronized void doAuth() {
@@ -117,6 +120,7 @@ public class ClientHandler {
                 if (message.startsWith("-exit")) {
                     chat.unsubscribe(this);
                     chat.broadcastMessage(String.format("[%s] logged out", name));
+                    executorService.shutdownNow();
                     break;
                 }
                 if (message.startsWith("-ch")) {
