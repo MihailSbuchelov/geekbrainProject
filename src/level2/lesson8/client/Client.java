@@ -1,9 +1,6 @@
 package level2.lesson8.client;
 
-import java.io.Closeable;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 public class Client {
@@ -53,5 +50,4 @@ public class Client {
             e.printStackTrace();
         }
     }
-
 }
