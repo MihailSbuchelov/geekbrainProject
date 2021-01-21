@@ -1,7 +1,7 @@
-import level3.lesson1.task3.Apple;
-import level3.lesson1.task3.FruitBox;
-import level3.lesson1.task3.Orange;
-import level3.lesson1.tasks1and2.GenTest;
+import level3.lesson5.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -114,29 +114,55 @@ public class Main {
 // Level 3
 // Lesson1
 // task1, task2
-        GenTest gt = new GenTest();
-        gt.printInfoArray();
-        gt.changeArrayToArrayList(gt.changePositionForArrayObj(1, 3));
-        gt.printInfoArrayList();
+//        GenTest gt = new GenTest();
+//        gt.printInfoArray();
+//        gt.changeArrayToArrayList(gt.changePositionForArrayObj(1, 3));
+//        gt.printInfoArrayList();
 // task 3
-        FruitBox<Apple> appleBox = new FruitBox(new Apple());
-        FruitBox<Apple> appleBox1 = new FruitBox(new Apple());
-        FruitBox<Orange> orangeBox = new FruitBox(new Orange());
-        appleBox.putFruit(new Apple());
-        appleBox.putFruit(new Apple());
-        appleBox.putFruit(new Apple());
-        orangeBox.putFruit(new Orange());
-        orangeBox.putFruit(new Orange());
-        orangeBox.putFruit(new Orange());
+//        FruitBox<Apple> appleBox = new FruitBox(new Apple());
+//        FruitBox<Apple> appleBox1 = new FruitBox(new Apple());
+//        FruitBox<Orange> orangeBox = new FruitBox(new Orange());
+//        appleBox.putFruit(new Apple());
+//        appleBox.putFruit(new Apple());
+//        appleBox.putFruit(new Apple());
+//        orangeBox.putFruit(new Orange());
+//        orangeBox.putFruit(new Orange());
+//        orangeBox.putFruit(new Orange());
+//
+//        System.out.println(appleBox.getWeightBox());
+//        System.out.println(orangeBox.getWeightBox());
+//        String value = (appleBox.compare(orangeBox)) ? "Equal boxes" : "Not equal boxes";
+//        System.out.println(value);
+//
+//        System.out.println("````````````````````````````````````````````");
+//        System.out.println("Apple box weight before moved from another fruit box: " + appleBox.getWeightBox());
+//        appleBox.moveFruit(appleBox1);
+//        System.out.println("Apple box weight after moved from another fruit box: " + appleBox.getWeightBox());
+// Lesson5
+// task1, task2, task3, task4
+        Transport bus1 = new Bus("Bus1");
+        Transport bus2 = new Bus("Bus2");
+        Transport bus3 = new Bus("Bus3");
+        Transport bus4 = new Bus("Bus4");
+        Transport car1 = new Car("Car1");
+        Transport car2 = new Car("Car2");
+        Transport truck1 = new Truck("Truck1");
+        Transport truck2 = new Truck("Truck2");
+        Transport truck3 = new Truck("Truck3");
+        List<Transport> transports = new ArrayList<>();
+        transports.add(bus1);
+        transports.add(bus2);
+        transports.add(bus3);
+        transports.add(bus4);
+        transports.add(car1);
+        transports.add(car2);
+        transports.add(truck1);
+        transports.add(truck2);
+        transports.add(truck3);
+        for (Transport transport : transports) {
+            transport.execute();
+        }
+        new FuelStation(transports).refuel();
 
-        System.out.println(appleBox.getWeightBox());
-        System.out.println(orangeBox.getWeightBox());
-        String value = (appleBox.compare(orangeBox)) ? "Equal boxes" : "Not equal boxes";
-        System.out.println(value);
-
-        System.out.println("````````````````````````````````````````````");
-        System.out.println("Apple box weight before moved from another fruit box: " + appleBox.getWeightBox());
-        appleBox.moveFruit(appleBox1);
-        System.out.println("Apple box weight after moved from another fruit box: " + appleBox.getWeightBox());
     }
 }
