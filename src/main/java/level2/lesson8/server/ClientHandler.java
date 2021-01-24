@@ -1,5 +1,7 @@
 package level2.lesson8.server;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 import java.net.Socket;
 import java.nio.file.Files;
@@ -10,6 +12,7 @@ import java.util.concurrent.Executors;
 import static java.lang.System.currentTimeMillis;
 
 public class ClientHandler {
+    private static final Logger logger = Logger.getLogger(ClientHandler.class);
     private String name;
     private DataInputStream in;
     private DataOutputStream out;
@@ -25,6 +28,7 @@ public class ClientHandler {
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
         } catch (Exception e) {
+            logger.error(e);
             throw new RuntimeException("SWW", e);
         }
 
@@ -59,6 +63,7 @@ public class ClientHandler {
                         Thread.sleep(3000);
                         socket.close();
                     } catch (IOException | InterruptedException e) {
+                        logger.error(e);
                         e.printStackTrace();
                     }
                 }
@@ -76,15 +81,18 @@ public class ClientHandler {
             while (true) {
                 String mayBeCredentials = in.readUTF();
                 if (mayBeCredentials.startsWith("-auth")) {
+                    logger.info(String.format("[%s] sent -auth command", name));
                     String[] credentials = mayBeCredentials.split("\\s");
                     String mayBeNickname = chat.getAuthenticationService()
                             .findNicknameByLoginAndPassword(credentials[1], credentials[2]);
                     if (mayBeNickname != null) {
                         if (!chat.isNicknameOccupied(mayBeNickname)) {
                             sendMessage("[INFO] Auth OK");
+                            logger.info("Auth OK");
                             name = mayBeNickname;
 
                             chat.broadcastMessage(String.format("[%s] logged in", name));
+                            logger.info(String.format("[%s] logged in", name));
                             chat.subscribe(this);
 
                             checkPeriod = true;
@@ -92,21 +100,26 @@ public class ClientHandler {
                             return;
                         } else {
                             sendMessage("[INFO] Current user is already logged in.");
+                            logger.info("Current user is already logged in.");
                         }
                     } else {
                         sendMessage("[INFO] Wrong login or password.");
+                        logger.info("Wrong login or password.");
                     }
                 }
             }
         } catch (Exception e) {
+            logger.error(e);
             throw new RuntimeException("SWW", e);
         }
     }
 
     public void sendMessage(String message) {
         try {
+            logger.info(String.format("%s sent message: %s", name, message));
             out.writeUTF(message);
         } catch (IOException e) {
+            logger.error(e);
             throw new RuntimeException("SWW", e);
         }
     }
@@ -118,12 +131,14 @@ public class ClientHandler {
                 String message = in.readUTF();
 
                 if (message.startsWith("-exit")) {
+                    logger.info(String.format("[%s] sent -exit command", name));
                     chat.unsubscribe(this);
                     chat.broadcastMessage(String.format("[%s] logged out", name));
                     executorService.shutdownNow();
                     break;
                 }
                 if (message.startsWith("-ch")) {
+                    logger.info(String.format("[%s] sent -ch command", name));
                     String oldName = this.getName();
                     String newName = message.split("\\s")[1];
                     if (!chat.isNicknameOccupied(newName)) {
@@ -133,9 +148,11 @@ public class ClientHandler {
                         System.out.println("[INFO] Current user is already logged in.");
                     }
                 }
+                logger.info(String.format("user %s sent %", name, message));
                 chat.broadcastMessage(String.format("[%s]: %s", name, message));
                 writeHistoryInToTheFile(new File("chat.txt"), String.format("[%s]: %s", name, message));
             } catch (IOException e) {
+                logger.error(e);
                 throw new RuntimeException("SWW", e);
             }
         }
@@ -153,6 +170,7 @@ public class ClientHandler {
                 sb.append("\r\n").append(line);
             }
         } catch (Exception e) {
+            logger.error(e);
             throw new RuntimeException("SWW", e);
         }
         return read100LinesFromFile(sb.toString());
@@ -184,6 +202,7 @@ public class ClientHandler {
             bw.write(value);
             bw.flush();
         } catch (Exception e) {
+            logger.error(e);
             throw new RuntimeException("SWW", e);
         }
     }
@@ -194,6 +213,7 @@ public class ClientHandler {
             try {
                 Files.createFile(Paths.get(fileName));
             } catch (Exception e) {
+                logger.error(e);
                 throw new RuntimeException("SWW", e);
             }
         }
