@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public class UserRepository {
 
     public CredentialsEntry findUser(String login, String password) {
