@@ -1,11 +1,11 @@
-import level3.lesson5.*;
+import level3.lesson7.ExecutingTest;
+import level3.lesson7.TestClassWithAnnotations;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.security.NoSuchAlgorithmException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
 // Level 1
 // Lesson 1
 //        boolean b = true;
@@ -140,29 +140,54 @@ public class Main {
 //        System.out.println("Apple box weight after moved from another fruit box: " + appleBox.getWeightBox());
 // Lesson5
 // task1, task2, task3, task4
-        Transport bus1 = new Bus("Bus1");
-        Transport bus2 = new Bus("Bus2");
-        Transport bus3 = new Bus("Bus3");
-        Transport bus4 = new Bus("Bus4");
-        Transport car1 = new Car("Car1");
-        Transport car2 = new Car("Car2");
-        Transport truck1 = new Truck("Truck1");
-        Transport truck2 = new Truck("Truck2");
-        Transport truck3 = new Truck("Truck3");
-        List<Transport> transports = new ArrayList<>();
-        transports.add(bus1);
-        transports.add(bus2);
-        transports.add(bus3);
-        transports.add(bus4);
-        transports.add(car1);
-        transports.add(car2);
-        transports.add(truck1);
-        transports.add(truck2);
-        transports.add(truck3);
-        for (Transport transport : transports) {
-            transport.execute();
-        }
-        new FuelStation(transports).refuel();
-
+//        Transport bus1 = new Bus("Bus1");
+//        Transport bus2 = new Bus("Bus2");
+//        Transport bus3 = new Bus("Bus3");
+//        Transport bus4 = new Bus("Bus4");
+//        Transport car1 = new Car("Car1");
+//        Transport car2 = new Car("Car2");
+//        Transport truck1 = new Truck("Truck1");
+//        Transport truck2 = new Truck("Truck2");
+//        Transport truck3 = new Truck("Truck3");
+//        List<Transport> transports = new ArrayList<>();
+//        transports.add(bus1);
+//        transports.add(bus2);
+//        transports.add(bus3);
+//        transports.add(bus4);
+//        transports.add(car1);
+//        transports.add(car2);
+//        transports.add(truck1);
+//        transports.add(truck2);
+//        transports.add(truck3);
+//        for (Transport transport : transports) {
+//            transport.execute();
+//        }
+//        new FuelStation(transports).refuel();
+// MD5 value for tests
+//        MessageDigest md = MessageDigest.getInstance("MD5");
+//        md.update("111111".getBytes());
+//
+//        byte byteData[] = md.digest();
+//
+//        //конвертируем байт в шестнадцатеричный формат первым способом
+//        StringBuffer sb = new StringBuffer();
+//        for (byte aByteData : byteData) {
+//            sb.append(Integer.toString((aByteData & 0xff) + 0x100, 16).substring(1));
+//        }
+//        System.out.println("Текст в шестнадцатеричном виде : " + sb.toString());
+//
+//        //конвертируем байт в шестнадцатеричный формат вторым способом
+//        StringBuffer hexString = new StringBuffer();
+//        for (byte aByteData : byteData) {
+//            String hex = Integer.toHexString(0xff & aByteData);
+//            if (hex.length() == 1) hexString.append('0');
+//            hexString.append(hex);
+//        }
+//        System.out.println("Текст в шестнадцатеричном виде : " + hexString.toString());
+//        TestClassWithAnnotations t = new TestClassWithAnnotations();
+//        Class c = t.getClass();
+// Lesson7
+// task1
+        ExecutingTest.start(TestClassWithAnnotations.class);
     }
 }
